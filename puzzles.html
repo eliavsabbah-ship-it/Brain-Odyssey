@@ -7,9 +7,20 @@
 </head>
 <body>
   <div class="container">
-    <h1>🧩 Today’s Puzzle</h1>
-    <div id="puzzle-container"></div>
-    <p>🔥 Streak: <span id="streakCount">0</span> days</p>
+    <!-- Top Heading -->
+    <div>
+      <h1>🧩 Today’s Puzzle</h1>
+      <p class="puzzle-question" id="puzzle-question"></p>
+    </div>
+
+    <!-- Puzzle Image -->
+    <img id="puzzle-image" class="puzzle-image" src="" alt="Puzzle Image">
+
+    <!-- Answer box pinned at bottom -->
+    <div id="answer-area"></div>
+
+    <!-- Streak -->
+    <p style="text-align:center;">🔥 Streak: <span id="streakCount">0</span> days</p>
 
     <div class="nav-buttons">
       <a href="index.html" class="btn">Home</a>
