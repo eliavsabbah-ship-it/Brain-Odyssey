@@ -19,14 +19,14 @@ const puzzles = [
 const todayIndex = new Date().getDate() % puzzles.length;
 const todayPuzzle = puzzles[todayIndex];
 
-document.getElementById("puzzle-container").innerHTML = `
-  <p class="puzzle-question"><strong>${todayPuzzle.question}</strong></p>
-  <img src="${todayPuzzle.img}" alt="Puzzle Image" class="puzzle-image" />
-  <div id="answer-area"></div>
-`;
+// Display puzzle
+document.getElementById("puzzle-question").textContent = todayPuzzle.question;
+document.getElementById("puzzle-image").src = todayPuzzle.img;
 
+// Create answer box at bottom
 createAnswerBox("answer-area", todayPuzzle.answer, () => updateStreak(), null);
 
+// Streak system
 function updateStreak() {
   let streak = localStorage.getItem("puzzleStreak") || 0;
   let lastPlayed = localStorage.getItem("lastPlayedDate");
@@ -41,6 +41,7 @@ function updateStreak() {
   document.getElementById("streakCount").textContent = streak;
 }
 
+// Load streak on page load
 window.onload = () => {
   const streak = localStorage.getItem("puzzleStreak") || 0;
   document.getElementById("streakCount").textContent = streak;
