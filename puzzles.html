@@ -2,41 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Puzzle - BrainWave</title>
+  <title>Daily Puzzle</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>BrainWave Daily Puzzle</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="puzzles.html">Daily Puzzle</a>
-    </nav>
-  </header>
+  <div id="main-container">
+    <h1>🧩 Daily Puzzle</h1>
+    <div id="puzzle-container"></div>
+    <p>🔥 Streak: <span id="streakCount">0</span> days</p>
+  </div>
 
-  <main>
-    <section class="instructions">
-      <h2>Instructions</h2>
-      <p id="puzzle-instructions">Loading puzzle...</p>
-    </section>
-
-    <section class="puzzle-area">
-      <h2>Today's Puzzle</h2>
-      <div id="puzzle-container"></div>
-      <button id="submit-btn">Submit</button>
-      <p id="feedback"></p>
-    </section>
-
-    <section class="streak">
-      <h3>Your Streak: <span id="streak-count">0</span> days</h3>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 BrainWave Puzzles</p>
-  </footer>
-
-  <script src="script.js"></script>
+  <!-- Load scripts -->
+  <script src="answerBox.js"></script>
+  <script src="puzzle.js"></script>
 </body>
 </html>
