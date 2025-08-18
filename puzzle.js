@@ -1,13 +1,22 @@
 // puzzle.js
-// Defines puzzles + streak system
+// Literal puzzles (not riddles)
 
 const puzzles = [
-  { question: "Unscramble: NITSPU", answer: "INPUT" },
-  { question: "Next number? 2, 4, 8, 16, ?", answer: "32" },
-  { question: "Capital of France?", answer: "PARIS" }
+  { 
+    question: "Which number completes the sequence? 1, 4, 9, 16, ?", 
+    answer: "25" 
+  },
+  { 
+    question: "Fill in the blank: Circle, Triangle, Square, Pentagon, ?", 
+    answer: "Hexagon" 
+  },
+  { 
+    question: "What is 12 × 12?", 
+    answer: "144" 
+  }
 ];
 
-// Pick today’s puzzle (rotates daily)
+// Pick today’s puzzle
 const todayIndex = new Date().getDate() % puzzles.length;
 const todayPuzzle = puzzles[todayIndex];
 
@@ -17,12 +26,11 @@ document.getElementById("puzzle-container").innerHTML = `
   <div id="answer-area"></div>
 `;
 
-// Create answer box
 createAnswerBox("answer-area", todayPuzzle.answer, () => {
   updateStreak();
 }, null);
 
-// --- Streak tracking ---
+// --- Streak system ---
 function updateStreak() {
   let streak = localStorage.getItem("puzzleStreak") || 0;
   let lastPlayed = localStorage.getItem("lastPlayedDate");
@@ -37,7 +45,6 @@ function updateStreak() {
   document.getElementById("streakCount").textContent = streak;
 }
 
-// Load streak when page opens
 window.onload = () => {
   const streak = localStorage.getItem("puzzleStreak") || 0;
   document.getElementById("streakCount").textContent = streak;
