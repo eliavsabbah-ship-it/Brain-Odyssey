@@ -1,74 +1,54 @@
+/* Reset & global styles */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
-  color: #333;
+  height: 100vh;
+  background: linear-gradient(270deg, #1b1b2f, #162447, #0f3460, #53354a);
+  background-size: 800% 800%;
+  animation: gradientShift 15s ease infinite;
+  color: #e0e0e0;
+  overflow-x: hidden;
 }
 
+/* Animate background */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Header */
 header {
-  background-color: #5a9bd5;
-  color: white;
-  padding: 1rem;
+  background-color: rgba(15, 52, 96, 0.9);
+  color: #ffffff;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 nav a {
-  color: white;
-  margin-left: 1rem;
+  color: #ffffff;
+  margin-left: 1.5rem;
   text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
+nav a:hover {
+  color: #ff9f1c;
+}
+
+/* Hero section on home page */
 .hero {
   text-align: center;
   padding: 3rem 1rem;
-  background: linear-gradient(120deg, #d4fc79, #96e6a1);
-}
-
-.cta-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background-color: #ffb347;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-}
-
-section {
-  margin: 2rem auto;
-  max-width: 800px;
-  padding: 1rem;
+  background: rgba(83, 53, 74, 0.8);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.7);
+  margin: 2rem auto;
+  max-width: 900px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
-button {
-  padding: 0.5rem 1rem;
-  background-color: #ff7e5f;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #feb47b;
-}
-
-#puzzle-container {
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #e0f7fa;
-  border-radius: 10px;
-  min-height: 150px;
-}
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #5a9bd5;
-  color: white;
-}
+.hero h2 {
