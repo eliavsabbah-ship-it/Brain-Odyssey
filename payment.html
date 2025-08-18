@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upgrade to Premium</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>PuzzleMaster</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="puzzle.html">Daily Puzzle</a>
+      <a href="payment.html">Upgrade</a>
+    </nav>
+  </header>
+
+  <section class="payment">
+    <h2>Unlock More Puzzles</h2>
+    <p>Get access to unlimited puzzles every day and keep your brain sharp. Support our community and enjoy more challenges.</p>
+    
+    <div class="pricing-box">
+      <h3>Premium Membership</h3>
+      <p><strong>$4.99/month</strong></p>
+      <button id="checkout-btn">Upgrade Now</button>
+    </div>
+
+    <p class="note">*This is a demo. Payment integration (Stripe/PayPal) needs to be added here.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 PuzzleMaster | All rights reserved</p>
+  </footer>
+
+  <script>
+    // Demo checkout button
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      alert("Payment system coming soon! In production, connect Stripe or PayPal here.");
+    });
+  </script>
+</body>
+</html>
