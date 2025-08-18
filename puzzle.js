@@ -1,17 +1,16 @@
-const puzzles = [
-  { img: "https://via.placeholder.com/1200x800.png?text=Puzzle+1", question: "Fill in the missing number", answer: "42" },
-  { img: "https://via.placeholder.com/1200x800.png?text=Puzzle+2", question: "Which shape comes next?", answer: "CIRCLE" },
-  { img: "https://via.placeholder.com/1200x800.png?text=Puzzle+3", question: "Choose the correct pair (A, B, or C)", answer: "B" }
-];
-
-const todayIndex = new Date().getDate() % puzzles.length;
-const todayPuzzle = puzzles[todayIndex];
+const todayPuzzle = {
+  img: "https://via.placeholder.com/1200x800.png?text=Hard+Puzzle",
+  question: "Find the missing pattern in this complex sequence",
+  answer: "42"
+};
 
 document.getElementById("puzzle-question").textContent = todayPuzzle.question;
 document.getElementById("puzzle-image").src = todayPuzzle.img;
 
+// Create answer box
 createAnswerBox("answer-area", todayPuzzle.answer, () => updateStreak(), null);
 
+// Streak tracking
 function updateStreak() {
   let streak = localStorage.getItem("puzzleStreak") || 0;
   let lastPlayed = localStorage.getItem("lastPlayedDate");
