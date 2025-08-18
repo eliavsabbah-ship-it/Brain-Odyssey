@@ -4,28 +4,54 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background: linear-gradient(270deg, #1b1b2f, #162447, #0f3460, #53354a);
-  background-size: 800% 800%;
-  animation: gradientShift 15s ease infinite;
-  color: #e0e0e0;
+  background: #0f0f1f;
+  color: #f5f5f5;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Animate background */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Floating background blobs */
+body::before, body::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.5;
+  animation: float 20s infinite ease-in-out;
+}
+
+body::before {
+  top: -100px;
+  left: -100px;
+  background: #ff6f61;
+  animation-delay: 0s;
+}
+
+body::after {
+  bottom: -100px;
+  right: -100px;
+  background: #06d6a0;
+  animation-delay: 10s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(60px) translateX(40px); }
+  100% { transform: translateY(0) translateX(0); }
 }
 
 /* Header */
 header {
-  background-color: rgba(15, 52, 96, 0.9);
+  background-color: rgba(15, 52, 96, 0.95);
   color: #ffffff;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 nav a {
@@ -37,18 +63,99 @@ nav a {
 }
 
 nav a:hover {
+  color: #ffd166;
+}
+
+/* Sections */
+section {
+  margin: 2rem auto;
+  max-width: 900px;
+  padding: 2rem;
+  border-radius: 12px;
+  background: rgba(25, 25, 40, 0.9);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 2;
+}
+
+/* Hero section */
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
   color: #ff9f1c;
 }
 
-/* Hero section on home page */
-.hero {
-  text-align: center;
-  padding: 3rem 1rem;
-  background: rgba(83, 53, 74, 0.8);
-  border-radius: 12px;
-  margin: 2rem auto;
-  max-width: 900px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #eeeeee;
 }
 
-.hero h2 {
+/* CTA button */
+.cta-btn, button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(90deg, #ff6f61, #ff9f1c, #06d6a0, #118ab2);
+  background-size: 300% 300%;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  animation: gradientMove 5s ease infinite;
+  transition: transform 0.2s ease;
+}
+
+button:hover, .cta-btn:hover {
+  transform: scale(1.05);
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Puzzle container */
+#puzzle-container {
+  margin-top: 1rem;
+  padding: 2rem;
+  background: #1f1f3b;
+  border: 2px solid #ff9f1c;
+  border-radius: 12px;
+  min-height: 150px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #ffd166;
+  text-align: center;
+}
+
+/* Payment box */
+.pricing-box {
+  background: #22223b;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  border: 2px solid #06d6a0;
+}
+
+.pricing-box h3 {
+  color: #06d6a0;
+}
+
+.note {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: rgba(15, 52, 96, 0.9);
+  color: white;
+  margin-top: 2rem;
+}
