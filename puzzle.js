@@ -1,17 +1,17 @@
 const puzzles = [
   {
-    img: "https://i.imgur.com/8z4Ew0h.png", // Math grid puzzle placeholder
-    question: "Fill in the missing number in the grid",
+    img: "puzzle-images/puzzle1.png",
+    question: "Fill in the missing number",
     answer: "42"
   },
   {
-    img: "https://i.imgur.com/9gHjX5K.png", // Sequence of shapes
+    img: "puzzle-images/puzzle2.png",
     question: "Which shape comes next?",
     answer: "CIRCLE"
   },
   {
-    img: "https://i.imgur.com/VkK8Ksi.png", // Logic matching puzzle
-    question: "Find the matching pair (A, B, or C)",
+    img: "puzzle-images/puzzle3.png",
+    question: "Choose the correct pair (A, B, or C)",
     answer: "B"
   }
 ];
@@ -25,7 +25,7 @@ document.getElementById("puzzle-container").innerHTML = `
   <div id="answer-area"></div>
 `;
 
-createAnswerBox("answer-area", todayPuzzle.answer, () => { updateStreak(); }, null);
+createAnswerBox("answer-area", todayPuzzle.answer, () => updateStreak(), null);
 
 function updateStreak() {
   let streak = localStorage.getItem("puzzleStreak") || 0;
