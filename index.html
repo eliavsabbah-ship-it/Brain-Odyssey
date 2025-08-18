@@ -1,48 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>PuzzleQuest | Daily Logic Puzzles</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>PuzzleQuest | Daily Logic Puzzles (Image-free)</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>PuzzleQuest 🧩</h1>
-    <p>Welcome to <strong>PuzzleQuest</strong> — the ultimate daily challenge of visual and logic puzzles. Sharpen your mind every day!</p>
+  <header class="site-header">
+    <div class="brand">PuzzleQuest 🧩</div>
+    <nav>
+      <a href="puzzle.html" class="btn sm">Play Today’s Puzzle</a>
+    </nav>
+  </header>
 
-    <div class="features">
-      <h2>Why PuzzleQuest?</h2>
-      <div class="feature-grid">
-        <div class="feature-item">
-          <h3>Daily Challenges</h3>
-          <p>Unique, hard puzzles each day to test your logic and observation skills.</p>
+  <main class="container">
+    <section class="hero card">
+      <h1>Train your brain — daily.</h1>
+      <p>
+        Hard, image-free logic challenges: ASCII mazes, memory flashes, logic gates,
+        Lights Out, and codebreaking (Caesar, substitution, binary/hex). New puzzles daily, infinite variations on demand.
+      </p>
+      <a href="puzzle.html" class="btn lg">Play Now</a>
+    </section>
+
+    <section class="features card">
+      <h2>What you get</h2>
+      <div class="grid-3">
+        <div class="pill">
+          <h3>Image-free</h3>
+          <p>Pure logic—no pictures or simple word riddles.</p>
         </div>
-        <div class="feature-item">
-          <h3>Streak Tracker</h3>
-          <p>Complete puzzles daily and see your streak grow!</p>
+        <div class="pill">
+          <h3>Hard & Fair</h3>
+          <p>Every puzzle is solvable with reasoning, not guessing.</p>
         </div>
-        <div class="feature-item">
-          <h3>Membership Perks</h3>
-          <p>Unlock additional puzzles and exclusive content with a premium subscription.</p>
+        <div class="pill">
+          <h3>Endless</h3>
+          <p>Seeded generators create infinite unique challenges.</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="nav-buttons">
-      <a href="puzzle.html" class="btn">Play Today’s Puzzle</a>
-    </div>
+    <section class="how card">
+      <h2>How it works</h2>
+      <ol>
+        <li>Open today’s puzzle (seeded by date).</li>
+        <li>Solve the square, full-page board.</li>
+        <li>Submit to grow your streak.</li>
+      </ol>
+      <a href="puzzle.html" class="btn">Try Today’s Puzzle</a>
+    </section>
 
-    <!-- Subscription Section -->
-    <div class="subscription">
-      <h2>Subscribe for Premium 🏆</h2>
-      <p>Gain access to:</p>
-      <ul>
+    <!-- Subscription section at bottom -->
+    <section class="subscription card">
+      <h2>Premium Membership 🏆</h2>
+      <p>Unlock extra daily puzzles, tougher variants, and streak boosts.</p>
+      <ul class="benefits">
         <li>5 puzzles per day</li>
-        <li>Exclusive harder challenges</li>
-        <li>Streak rewards and bonuses</li>
+        <li>Advanced modes & bigger grids</li>
+        <li>Bonus streak multipliers</li>
       </ul>
       <button class="btn">Subscribe for $4.99/month</button>
-    </div>
-  </div>
+      <p class="sub-note">Payments coming soon. (Demo button.)</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© <span id="year"></span> PuzzleQuest</div>
+    <a href="puzzle.html" class="link">Play</a>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
