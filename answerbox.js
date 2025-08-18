@@ -24,11 +24,9 @@ function isCloseEnough(userAnswer, correctAnswer) {
 function createAnswerBox(containerId, correctAnswer, onCorrect, onWrong) {
   const container = document.getElementById(containerId);
   container.innerHTML = `
-    <div class="answer-box">
-      <input type="text" id="userAnswer" placeholder="Type your answer here..." />
-      <button id="submitAnswer">Submit</button>
-      <p id="feedback"></p>
-    </div>
+    <input type="text" id="userAnswer" placeholder="Type your answer here..." />
+    <button id="submitAnswer">Submit</button>
+    <p id="feedback"></p>
   `;
   document.getElementById("submitAnswer").addEventListener("click", () => {
     const userAnswer = document.getElementById("userAnswer").value;
