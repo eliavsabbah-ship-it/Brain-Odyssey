@@ -1,56 +1,82 @@
-window.onload = () => {
-  const puzzleType = localStorage.getItem("chosenPuzzle");
-  if (!puzzleType) {
-    window.location.href = "puzzle-select.html"; // force puzzle choice
-    return;
-  }
+let chosenPuzzle = localStorage.getItem("chosenPuzzle");
+let currentPuzzle = null;
+let playerPos = {x: 1, y: 1};
 
-  const puzzleDiv = document.getElementById("puzzle");
-  const instructionsDiv = document.getElementById("instructions");
+// Puzzle definitions
+const puzzles = {
+  maze: () => {
+    let maze = [
+      "##########",
+      "#S     #E#",
+      "# ### #  #",
+      "#   # ####",
+      "##########"
+    ].map(r => r.split(""));
 
-  switch (puzzleType) {
-    case "maze":
-      instructionsDiv.innerHTML = "<h2>Maze Puzzle</h2><p>Use arrow keys to reach the exit (E).</p>";
-      puzzleDiv.textContent = `
-#########
-#S     E#
-# ##### #
-#       #
-#########`;
-      break;
-
-    case "memory":
-      instructionsDiv.innerHTML = "<h2>Memory Challenge</h2><p>Memorize the sequence shown for 3 seconds, then type it below.</p>";
-      const seq = Math.random().toString(36).substring(2, 7).toUpperCase();
-      puzzleDiv.textContent = seq;
-      setTimeout(() => puzzleDiv.textContent = "???", 3000);
-      window.expectedAnswer = seq;
-      break;
-
-    case "lights":
-      instructionsDiv.innerHTML = "<h2>Lights Out</h2><p>Click the cells to turn all lights off.</p>";
-      puzzleDiv.textContent = "[Lights Out grid would go here]";
-      break;
-
-    case "logic":
-      instructionsDiv.innerHTML = "<h2>Logic Gates</h2><p>Combine gates (AND, OR, XOR) to match the target output.</p>";
-      puzzleDiv.textContent = "Inputs: 1, 0\nTarget: 1\nYour challenge: build with OR";
-      window.expectedAnswer = "OR";
-      break;
-
-    case "code":
-      instructionsDiv.innerHTML = "<h2>Codebreaking</h2><p>Decode the Caesar cipher word.</p>";
-      puzzleDiv.textContent = "QVAAMF (shifted)";
-      window.expectedAnswer = "PUZZLE"; // pretend
-      break;
+    // find start position
+    for (let y = 0; y < maze.length; y++) {
+      for (let x = 0; x < maze[y].length; x++) {
+        if (maze[y][x] === "S") {
+          playerPos = {x, y};
+        }
+      }
+    }
+    drawMaze(maze);
+    document.addEventListener("keydown", (e) => handleMove(e, maze));
+  },
+  memory: () => {
+    document.getElementById("puzzle").innerText =
+      "Memorize this sequence: 9-3-7-1-4\n(Type it back after 3 seconds)";
+  },
+  logic: () => {
+    document.getElementById("puzzle").innerText =
+      "Logic Puzzle:\nYou have inputs A=1, B=0.\nTarget = 1\nAllowed Gates: AND, OR, XOR\nWhich gate gives the target?";
+  },
+  lights: () => {
+    document.getElementById("puzzle").innerText =
+      "Lights Out Puzzle:\nClick buttons to turn off all the lights (coming soon!)";
+  },
+  cipher: () => {
+    document.getElementById("puzzle").innerText =
+      "Cipher Puzzle:\nDecode this word (Caesar +3): QVAAMF";
   }
 };
 
-function submitAnswer() {
-  const ans = document.getElementById("answer").value.trim().toUpperCase();
-  if (ans === window.expectedAnswer) {
-    alert("Correct! 🎉");
-  } else {
-    alert("Not quite, try again!");
+function drawMaze(maze) {
+  let mazeCopy = maze.map(r => [...r]);
+  mazeCopy[playerPos.y][playerPos.x] = "●";
+  document.getElementById("puzzle").innerText =
+    mazeCopy.map(r => r.join("")).join("\n");
+}
+
+function handleMove(e, maze) {
+  let {x, y} = playerPos;
+  if (e.key === "ArrowUp" && maze[y-1][x] !== "#") y--;
+  if (e.key === "ArrowDown" && maze[y+1][x] !== "#") y++;
+  if (e.key === "ArrowLeft" && maze[y][x-1] !== "#") x--;
+  if (e.key === "ArrowRight" && maze[y][x+1] !== "#") x++;
+
+  playerPos = {x, y};
+  drawMaze(maze);
+
+  if (maze[y][x] === "E") {
+    document.getElementById("feedback").innerText = "🎉 You escaped the maze!";
   }
+}
+
+// puzzle chooser
+function choosePuzzle(type) {
+  localStorage.setItem("chosenPuzzle", type);
+  window.location.href = "puzzle.html";
+}
+
+// run chosen puzzle
+window.onload = () => {
+  if (chosenPuzzle && puzzles[chosenPuzzle]) {
+    puzzles[chosenPuzzle]();
+  }
+};
+
+function checkAnswer() {
+  document.getElementById("feedback").innerText = "Answer submitted!";
 }
