@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Choose Your Puzzle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Choose Your Puzzle</h1>
+    <p>Select a puzzle type below. Once chosen, you cannot switch back.</p>
+
+    <div class="puzzle-options">
+      <button onclick="choosePuzzle('maze')">Maze Puzzle</button>
+      <button onclick="choosePuzzle('memory')">Memory Challenge</button>
+      <button onclick="choosePuzzle('logic')">Logic Gates</button>
+      <button onclick="choosePuzzle('lights')">Lights Out</button>
+      <button onclick="choosePuzzle('cipher')">Codebreaking</button>
+    </div>
+  </div>
+
+  <script src="puzzle.js"></script>
+</body>
+</html>
