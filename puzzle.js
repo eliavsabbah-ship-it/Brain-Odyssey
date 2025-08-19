@@ -6,36 +6,48 @@ const submitBtn = document.getElementById("submitAnswer");
 
 let correctAnswer = null;
 
-// Load chosen puzzle type from localStorage
+// Load chosen puzzle type
 const selectedType = localStorage.getItem("selectedPuzzleType");
-
 if(!selectedType){
-  // If no type chosen, force them back to index
   window.location.href = "index.html";
 }
 
+// Free or Premium check
+const isPremium = localStorage.getItem("isPremium") === "true";
+const lastPlayDate = localStorage.getItem("lastPlayDate");
+const today = new Date().toDateString();
+
+if(!isPremium && lastPlayDate === today){
+  puzzleArea.innerText = "❌ Free players can only play 1 puzzle per day.\nCome back tomorrow, or subscribe for unlimited puzzles!";
+  document.getElementById("answerInput").style.display = "none";
+  document.getElementById("submitAnswer").style.display = "none";
+  instructions.innerText = "";
+  throw new Error("Daily limit reached");
+}
+
+// Puzzle sets with clearer instructions
 const puzzlePool = {
   cipher: [
-    {instruction:"Decode Caesar Cipher (shift -1): QVAAMF", answer:"PUZZLE"}
+    {instruction:"🔐 Caesar Cipher:\nDecode this text (shift back by 1 letter): QVAAMF", answer:"PUZZLE"}
   ],
   memory: [
-    {instruction:"Memorize this sequence for 3 seconds: 74291. Type it back.", answer:"74291"}
+    {instruction:"🧠 Memory Challenge:\nRemember this number: 74291\nType it exactly after a few seconds.", answer:"74291"}
   ],
   binary: [
-    {instruction:"Decode binary: 01010000 01010101 01011010 01011010 01001100 01000101", answer:"PUZZLE"}
+    {instruction:"💻 Binary Puzzle:\nDecode this binary into letters:\n01010000 01010101 01011010 01011010 01001100 01000101", answer:"PUZZLE"}
   ],
   maze: [
-    {instruction:"Navigate this ASCII maze to the exit (top-left to bottom-right):\nS..#\n.#..\n..#E\n#...", answer:"DONE"}
+    {instruction:"🌀 ASCII Maze:\nFind the path from S (Start) to E (Exit). Answer with 'DONE' when you solved it mentally:\nS..#\n.#..\n..#E\n#...", answer:"DONE"}
   ],
   lightsout: [
-    {instruction:"Lights Out: Toggle all buttons to turn them off. Type 'DONE' when solved.", answer:"DONE"}
+    {instruction:"💡 Lights Out:\nImagine a 3x3 grid of lights. Toggle them until all are OFF. Type 'DONE' once solved.", answer:"DONE"}
   ],
   logic: [
-    {instruction:"Logic Puzzle: Solve the AND/OR/XOR to reach target. Type 'DONE' when solved.", answer:"DONE"}
+    {instruction:"⚡ Logic Puzzle:\nInput A=1, B=0. Solve: (A AND B) OR (A XOR B).\nAnswer with the result: 0 or 1", answer:"1"}
   ]
 };
 
-// Pick a random puzzle from the chosen type
+// Pick one puzzle from chosen type
 function loadPuzzle() {
   const puzzles = puzzlePool[selectedType];
   const puzzle = puzzles[Math.floor(Math.random() * puzzles.length)];
@@ -47,10 +59,11 @@ function loadPuzzle() {
 submitBtn.addEventListener("click", () => {
   if(answerInput.value.trim().toUpperCase() === correctAnswer){
     result.innerText = "✅ Correct!";
+    localStorage.setItem("lastPlayDate", today);
   } else {
-    result.innerText = "❌ Try again.";
+    result.innerText = "❌ Incorrect. Try again!";
   }
 });
 
-// Load the puzzle immediately
+// Start puzzle
 loadPuzzle();
