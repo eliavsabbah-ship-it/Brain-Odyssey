@@ -1,77 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>PuzzleQuest | Daily Logic Puzzles (Image-free)</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle Master</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">PuzzleQuest 🧩</div>
-    <nav>
-      <a href="puzzle.html" class="btn sm">Play Today’s Puzzle</a>
-    </nav>
+  <header>
+    <h1>Puzzle Master</h1>
+    <p>Challenge your brain with unique puzzles. Free and Premium players get unlimited puzzles!</p>
   </header>
 
-  <main class="container">
-    <section class="hero card">
-      <h1>Train your brain — daily.</h1>
-      <p>
-        Hard, image-free logic challenges: ASCII mazes, memory flashes, logic gates,
-        Lights Out, and codebreaking (Caesar, substitution, binary/hex). New puzzles daily, infinite variations on demand.
-      </p>
-      <a href="puzzle.html" class="btn lg">Play Now</a>
-    </section>
-
-    <section class="features card">
-      <h2>What you get</h2>
-      <div class="grid-3">
-        <div class="pill">
-          <h3>Image-free</h3>
-          <p>Pure logic—no pictures or simple word riddles.</p>
-        </div>
-        <div class="pill">
-          <h3>Hard & Fair</h3>
-          <p>Every puzzle is solvable with reasoning, not guessing.</p>
-        </div>
-        <div class="pill">
-          <h3>Endless</h3>
-          <p>Seeded generators create infinite unique challenges.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="how card">
-      <h2>How it works</h2>
-      <ol>
-        <li>Open today’s puzzle (seeded by date).</li>
-        <li>Solve the square, full-page board.</li>
-        <li>Submit to grow your streak.</li>
-      </ol>
-      <a href="puzzle.html" class="btn">Try Today’s Puzzle</a>
-    </section>
-
-    <!-- Subscription section at bottom -->
-    <section class="subscription card">
-      <h2>Premium Membership 🏆</h2>
-      <p>Unlock extra daily puzzles, tougher variants, and streak boosts.</p>
-      <ul class="benefits">
-        <li>5 puzzles per day</li>
-        <li>Advanced modes & bigger grids</li>
-        <li>Bonus streak multipliers</li>
-      </ul>
-      <button class="btn">Subscribe for $4.99/month</button>
-      <p class="sub-note">Payments coming soon. (Demo button.)</p>
+  <main>
+    <section class="puzzle-selection">
+      <h2>Select Puzzle Type</h2>
+      <p>Pick a type and start playing. Once chosen, you’ll always play this type unless you reset.</p>
+      <select id="puzzleTypeSelect">
+        <option value="cipher">Caesar Cipher / Codebreaking</option>
+        <option value="memory">Memory Challenge</option>
+        <option value="binary">Binary / Hex Decode</option>
+        <option value="maze">ASCII Maze</option>
+        <option value="lightsout">Lights Out</option>
+        <option value="logic">Logic Gates Puzzle</option>
+      </select>
+      <a href="puzzles.html" id="playBtn" class="play-btn">Play Puzzle</a>
+      <button id="resetChoice">Reset Puzzle Choice</button>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div>© <span id="year"></span> PuzzleQuest</div>
-    <a href="puzzle.html" class="link">Play</a>
-  </footer>
-
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const playBtn = document.getElementById("playBtn");
+    const puzzleTypeSelect = document.getElementById("puzzleTypeSelect");
+    const resetBtn = document.getElementById("resetChoice");
+
+    // If user already picked, skip selection
+    if(localStorage.getItem("selectedPuzzleType")){
+      window.location.href = "puzzles.html";
+    }
+
+    playBtn.addEventListener("click", () => {
+      localStorage.setItem("selectedPuzzleType", puzzleTypeSelect.value);
+    });
+
+    resetBtn.addEventListener("click", () => {
+      localStorage.removeItem("selectedPuzzleType");
+      alert("Puzzle type reset! Now you can pick again.");
+    });
   </script>
 </body>
 </html>
