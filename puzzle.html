@@ -1,51 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Puzzle | PuzzleQuest</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">PuzzleQuest 🧩</div>
-    <nav>
-      <a href="index.html" class="btn sm">Home</a>
-    </nav>
+  <header>
+    <h1>Your Puzzle</h1>
+    <p id="instructions"></p>
   </header>
 
-  <main class="puzzle-container">
-    <section class="puzzle-header">
-      <h1>Today’s Puzzle</h1>
-      <div class="meta">
-        <div>🔥 Streak: <span id="streakCount">0</span> days</div>
-        <div>Mode: <span id="modeLabel">—</span></div>
-        <div>Seed: <span id="seedLabel">—</span></div>
-      </div>
-    </section>
-
-    <!-- Square interactive puzzle board -->
-    <section id="board" class="board"></section>
-
-    <!-- Instructions / constraints -->
-    <section id="instructions" class="card narrow"></section>
-
-    <!-- Answer area under the puzzle -->
-    <section id="answer-area" class="answer-area">
-      <input type="text" id="userAnswer" placeholder="Type your answer or DONE…" />
-      <button id="submitAnswer" class="btn">Submit</button>
-      <p id="feedback" class="feedback"></p>
-    </section>
-
-    <section class="controls">
-      <button id="newDaily" class="btn sm">Load Today’s Puzzle</button>
-      <button id="newRandom" class="btn sm">New Random Puzzle</button>
-      <button id="switchMode" class="btn sm">Switch Mode</button>
-    </section>
+  <main>
+    <div id="puzzleArea"></div>
+    <input type="text" id="answerInput" placeholder="Type your answer here...">
+    <button id="submitAnswer">Submit</button>
+    <p id="result"></p>
   </main>
-
-  <footer class="site-footer">
-    <a href="index.html" class="link">Home</a>
-  </footer>
 
   <script src="puzzle.js"></script>
 </body>
