@@ -27,7 +27,7 @@ main {
   padding: 20px;
 }
 
-.puzzle-selection {
+section {
   margin: 20px auto;
   padding: 20px;
   border-radius: 12px;
@@ -64,6 +64,7 @@ button:hover, .play-btn:hover {
   width: 80%;
   max-width: 600px;
   min-height: 200px;
+  white-space: pre-line;
 }
 
 #answerInput {
