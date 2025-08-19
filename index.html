@@ -3,61 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Puzzle Master</title>
+  <title>PuzzleQuest</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Puzzle Master</h1>
-    <p>Challenge your brain with daily puzzles. Free players get 1 puzzle per day. Subscribers enjoy unlimited puzzles.</p>
+    <h1>Welcome to PuzzleQuest</h1>
   </header>
 
   <main>
-    <section class="about">
-      <h2>About Puzzle Master</h2>
-      <p>Puzzle Master is a collection of logic, memory, and code-breaking challenges. Select your favorite puzzle type and train your brain daily!</p>
+    <section>
+      <h2>Challenge Your Mind Every Day</h2>
+      <p>
+        PuzzleQuest is where thinkers, dreamers, and problem-solvers come to sharpen their minds.  
+        Every day brings you a brand-new puzzle: from logic gates and ciphers, to lights-out challenges and ASCII mazes.  
+        Train your memory, unlock your creativity, and grow your streak as you solve one puzzle after another.  
+      </p>
     </section>
 
-    <section class="subscription">
-      <h2>Subscription</h2>
-      <p>✨ Free players: 1 puzzle per day</p>
-      <p>💎 Premium subscribers: Unlimited puzzles daily</p>
-      <button onclick="alert('Subscription feature coming soon!')">Subscribe Now</button>
+    <section>
+      <h2>Why Join?</h2>
+      <ul>
+        <li>🌟 Daily unique puzzles that push your brain further</li>
+        <li>🧩 Multiple puzzle types to keep things fresh</li>
+        <li>🔥 Track your streak and challenge yourself</li>
+        <li>💡 Calm, professional design to keep you focused</li>
+      </ul>
     </section>
 
-    <section class="puzzle-selection">
-      <h2>Select Puzzle Type</h2>
-      <p>Pick a type to start playing. Once chosen, you’ll always get this type unless you reset your choice.</p>
-      <select id="puzzleTypeSelect">
-        <option value="cipher">Caesar Cipher / Codebreaking</option>
-        <option value="memory">Memory Challenge</option>
-        <option value="binary">Binary Decoder</option>
-        <option value="maze">ASCII Maze</option>
-        <option value="lightsout">Lights Out</option>
-        <option value="logic">Logic Puzzle</option>
-      </select>
-      <a href="puzzles.html" id="playBtn" class="play-btn">Play Puzzle</a>
-      <button id="resetChoice">Reset Puzzle Choice</button>
+    <section id="subscription">
+      <h2>Get Unlimited Puzzles</h2>
+      <p>
+        Free members get one puzzle per day.  
+        Upgrade to premium for unlimited puzzles and exclusive challenges.
+      </p>
+      <button>Subscribe Now</button>
     </section>
+
+    <div class="center-btn">
+      <a href="puzzle-select.html" class="btn">Start Playing</a>
+    </div>
   </main>
-
-  <script>
-    const playBtn = document.getElementById("playBtn");
-    const puzzleTypeSelect = document.getElementById("puzzleTypeSelect");
-    const resetBtn = document.getElementById("resetChoice");
-
-    if(localStorage.getItem("selectedPuzzleType")){
-      window.location.href = "puzzles.html";
-    }
-
-    playBtn.addEventListener("click", () => {
-      localStorage.setItem("selectedPuzzleType", puzzleTypeSelect.value);
-    });
-
-    resetBtn.addEventListener("click", () => {
-      localStorage.removeItem("selectedPuzzleType");
-      alert("Puzzle type reset! You can now pick a new one.");
-    });
-  </script>
 </body>
 </html>
