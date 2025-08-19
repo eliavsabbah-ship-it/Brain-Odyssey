@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Your Puzzle</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="puzzle-select.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Choose Your Puzzle</h1>
+  </header>
+  <main>
+    <div class="puzzle-options">
+      <div class="puzzle-choice">
+        <h2>Mazes</h2>
+        <p>Navigate from start to finish using arrow keys in an ASCII maze.</p>
+        <button onclick="choosePuzzle('maze')">Play Maze</button>
+      </div>
+
+      <div class="puzzle-choice">
+        <h2>Memory Challenge</h2>
+        <p>Memorize and repeat sequences of numbers and letters.</p>
+        <button onclick="choosePuzzle('memory')">Play Memory</button>
+      </div>
+
+      <div class="puzzle-choice">
+        <h2>Lights Out</h2>
+        <p>Toggle the grid until all lights are off.</p>
+        <button onclick="choosePuzzle('lights')">Play Lights Out</button>
+      </div>
+
+      <div class="puzzle-choice">
+        <h2>Logic Gates</h2>
+        <p>Combine AND, OR, XOR gates to reach the target output.</p>
+        <button onclick="choosePuzzle('logic')">Play Logic</button>
+      </div>
+
+      <div class="puzzle-choice">
+        <h2>Codebreaking</h2>
+        <p>Crack ciphers like Caesar shift and substitution puzzles.</p>
+        <button onclick="choosePuzzle('code')">Play Codebreaking</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
