@@ -2,22 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Puzzle</title>
+  <title>Play Puzzle</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="puzzle.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Your Puzzle</h1>
-  </header>
-  <main id="puzzle-container">
-    <div id="instructions"></div>
-    <div id="puzzle"></div>
-    <div id="answer-box">
+  <div class="container">
+    <h1 id="puzzle-title">Your Puzzle</h1>
+    <pre id="puzzle"></pre>
+    <div id="answer-area">
       <input type="text" id="answer" placeholder="Type your answer here">
-      <button onclick="submitAnswer()">Submit</button>
+      <button onclick="checkAnswer()">Submit</button>
     </div>
-  </main>
+    <p id="feedback"></p>
+  </div>
+  <script src="puzzle.js"></script>
 </body>
 </html>
