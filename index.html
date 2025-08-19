@@ -9,20 +9,32 @@
 <body>
   <header>
     <h1>Puzzle Master</h1>
-    <p>Challenge your brain with unique puzzles. Free and Premium players get unlimited puzzles!</p>
+    <p>Challenge your brain with daily puzzles. Free players get 1 puzzle per day. Subscribers enjoy unlimited puzzles.</p>
   </header>
 
   <main>
+    <section class="about">
+      <h2>About Puzzle Master</h2>
+      <p>Puzzle Master is a collection of logic, memory, and code-breaking challenges. Select your favorite puzzle type and train your brain daily!</p>
+    </section>
+
+    <section class="subscription">
+      <h2>Subscription</h2>
+      <p>✨ Free players: 1 puzzle per day</p>
+      <p>💎 Premium subscribers: Unlimited puzzles daily</p>
+      <button onclick="alert('Subscription feature coming soon!')">Subscribe Now</button>
+    </section>
+
     <section class="puzzle-selection">
       <h2>Select Puzzle Type</h2>
-      <p>Pick a type and start playing. Once chosen, you’ll always play this type unless you reset.</p>
+      <p>Pick a type to start playing. Once chosen, you’ll always get this type unless you reset your choice.</p>
       <select id="puzzleTypeSelect">
         <option value="cipher">Caesar Cipher / Codebreaking</option>
         <option value="memory">Memory Challenge</option>
-        <option value="binary">Binary / Hex Decode</option>
+        <option value="binary">Binary Decoder</option>
         <option value="maze">ASCII Maze</option>
         <option value="lightsout">Lights Out</option>
-        <option value="logic">Logic Gates Puzzle</option>
+        <option value="logic">Logic Puzzle</option>
       </select>
       <a href="puzzles.html" id="playBtn" class="play-btn">Play Puzzle</a>
       <button id="resetChoice">Reset Puzzle Choice</button>
@@ -34,7 +46,6 @@
     const puzzleTypeSelect = document.getElementById("puzzleTypeSelect");
     const resetBtn = document.getElementById("resetChoice");
 
-    // If user already picked, skip selection
     if(localStorage.getItem("selectedPuzzleType")){
       window.location.href = "puzzles.html";
     }
@@ -45,7 +56,7 @@
 
     resetBtn.addEventListener("click", () => {
       localStorage.removeItem("selectedPuzzleType");
-      alert("Puzzle type reset! Now you can pick again.");
+      alert("Puzzle type reset! You can now pick a new one.");
     });
   </script>
 </body>
